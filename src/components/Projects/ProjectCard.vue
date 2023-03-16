@@ -1,20 +1,7 @@
 <script>
 export default {
-    name: 'AppCard',
+    name: 'ProjectCard',
     props: { projects: Array },
-    // computed: {
-    //     projectDate() {
-    //         const date = new Date(this.project.updated_at);
-    //         let day = date.getDay();
-    //         let month = date.getMonth();
-    //         const year = date.getFullYear();
-
-    //         if (day < 10) day = '0' + day;
-    //         if (month < 10) month = '0' + month;
-
-    //         return `${day}/${month}/${year}`;
-    //     }
-    // }
 };
 </script>
 
@@ -24,10 +11,10 @@ export default {
             <div v-for="project in projects" :key="project.id" class="col-projects">
                 <div class="card text-center">
                     <h3>{{ project.name }}</h3>
-                    <p>{{ project.description }}</p>
+                    <p v-if="project.description">{{ project.description }}</p>
                     <p><i>Progetto per: </i>{{ project.project_for }}</p>
-                    <p><i>Piattaforme: </i>{{ project.web_platform }}</p>
-                    <!-- <p><i>Ultima modifica: </i>{{ projectDate }}</p> -->
+                    <p v-if="project.web_platform"><i>Piattaforme: </i>{{ project.web_platform }}</p>
+                    <!-- <p><i>Ultima modifica: </i>{{ projectDate }}</p>S -->
 
                 </div>
             </div>
