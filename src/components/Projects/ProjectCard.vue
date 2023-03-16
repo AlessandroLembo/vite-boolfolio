@@ -1,7 +1,7 @@
 <script>
 export default {
     name: 'ProjectCard',
-    props: { project: Object }
+    props: { project: Object, isDetail: Boolean }
 };
 </script>
 
@@ -17,7 +17,8 @@ export default {
             </div>
 
             <!-- bindo il to, metto il nome della rotta e passo il paramentro che mi serve, l'id -->
-            <router-link :to="{ name: 'project-detail', params: { id: project.id } }"
+
+            <router-link v-if="!isDetail" :to="{ name: 'project-detail', params: { id: project.id } }"
                 class="btn btn-sm btn-success">Vedi</router-link>
         </div>
     </div>

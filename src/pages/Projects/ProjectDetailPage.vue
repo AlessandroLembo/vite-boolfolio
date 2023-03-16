@@ -38,7 +38,7 @@ export default {
 <template>
     <!-- <app-loader v-if="isLoading"></app-loader> -->
 
-    <project-card :project="project" class="detail-card"></project-card>
+    <project-card :project="project" :isDetail="true" class="detail-card"></project-card>
 </template>
 
 <style scoped lang="scss">
