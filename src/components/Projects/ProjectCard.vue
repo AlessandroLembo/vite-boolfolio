@@ -1,44 +1,33 @@
 <script>
 export default {
     name: 'ProjectCard',
-    props: { projects: Array },
+    props: { project: Object }
 };
 </script>
 
 <template>
-    <section id="projects-list">
-        <div v-if="projects.length" class="row-projects">
-            <div v-for="project in projects" :key="project.id" class="col-projects">
-                <div class="card text-center">
-                    <h3>{{ project.name }}</h3>
-                    <p v-if="project.description">{{ project.description }}</p>
-                    <p><i>Progetto per: </i>{{ project.project_for }}</p>
-                    <p v-if="project.web_platform"><i>Piattaforme: </i>{{ project.web_platform }}</p>
-                    <!-- <p><i>Ultima modifica: </i>{{ projectDate }}</p>S -->
-
-                </div>
+    <div class="project-card text-center">
+        <div class="ps-card d-flex flex-column justify-content-between align-items-center">
+            <div>
+                <h3>{{ project.name }}</h3>
+                <p v-if="project.description">{{ project.description }}</p>
+                <p><i>Progetto per: </i>{{ project.project_for }}</p>
+                <p v-if="project.web_platform"><i>Piattaforme: </i>{{ project.web_platform }}</p>
+                <!-- <p><i>Ultima modifica: </i>{{ projectDate }}</p>S -->
             </div>
 
+            <!-- bindo il to, metto il nome della rotta e passo il paramentro che mi serve, l'id -->
+            <router-link :to="{ name: 'project-detail', params: { id: project.id } }"
+                class="btn btn-sm btn-success">Vedi</router-link>
         </div>
-        <h2 v-else class="my-4">Non ci sono progetti</h2>
-
-    </section>
+    </div>
 </template>
 
 <style scoped lang="scss">
-.row-projects {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.col-projects {
-    flex-basis: calc(100% / 3);
-    min-height: 300px;
-    padding: 1rem;
-
-    .card {
-        height: 100%;
-        padding: 10px;
-    }
+.ps-card {
+    min-height: 350px;
+    padding: 1.5rem;
+    border: 1px solid lightgray;
 }
 </style>
+

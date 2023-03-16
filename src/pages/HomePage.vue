@@ -1,12 +1,12 @@
 <script>
 import axios from 'axios';
-import ProjectCard from '../components/Projects/ProjectCard.vue';
+import ProjectsList from '../components/Projects/ProjectsList.vue';
 
 // Salvo in una variabile la base APi (8000 è la porta del server su cui gira l'app del mio progetto)
 const apiBaseUrl = 'http://localhost:8000/api/';
 export default {
     name: 'Home page',
-    components: { ProjectCard },
+    components: { ProjectsList },
     data: () => ({
         projects: []
     }),
@@ -26,7 +26,8 @@ export default {
 
 <template>
     <div class="container">
-        <project-card :projects="projects"></project-card>
+        <projects-list :projects="projects"></projects-list>
+
 
     </div>
 </template>
