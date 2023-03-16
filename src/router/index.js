@@ -12,7 +12,8 @@ const router = createRouter({
 
     // simulo la navigazione come se fossimo sul web
     history: createWebHistory(),
-
+    linkActiveClass: 'active',
+    linkExactActiveClass: 'active',
     routes: [
         { path: '/', name: 'home', component: HomePage },
         { path: '/contact', name: 'contact', component: ContactPage },
