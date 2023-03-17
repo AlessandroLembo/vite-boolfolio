@@ -24,30 +24,21 @@ export default {
 </script>
 
 <template>
-    <!-- <div class="project-card text-center">
-                    <div class="ps-card d-flex flex-column justify-content-between align-items-center">
-                        <div>
-                            <h3>{{ project.name }}</h3>
-                            <p v-if="project.description">{{ project.description }}</p>
-                            <p><i>Progetto per: </i>{{ project.project_for }}</p>
-                            <p v-if="project.web_platform"><i>Piattaforme: </i>{{ project.web_platform }}</p>
-                            <p><i>Ultima modifica: </i>{{ projectDate }}</p>
-                        </div> -->
-
-    <!-- bindo il to, metto il nome della rotta e passo il paramentro che mi serve, l'id -->
-
-    <!-- <router-link v-if="!isDetail" :to="{ name: 'project-detail', params: { id: project.id } }"
-                            class="btn btn-sm btn-success">Vedi</router-link>
-                    </div>
-                </div> -->
     <div class="card">
         <div class="card-header">
             <h3>{{ project.name }}</h3>
         </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card-body d-flex justify-content-between align-items-center">
+            <div>
+                <h5><i>Progetto per: </i>{{ project.project_for }}</h5>
+                <p v-if="project.description">{{ project.description }}</p>
+                <p v-if="project.web_platform"><i>Piattaforme: </i>{{ project.web_platform }}</p>
+                <p><i>Ultima modifica: </i>{{ projectDate }}</p>
+            </div>
+
+            <!-- bindo il to, metto il nome della rotta e passo il paramentro che mi serve, l'id -->
+            <router-link v-if="!isDetail" :to="{ name: 'project-detail', params: { id: project.id } }"
+                class="btn btn-success align-self-end">Vedi</router-link>
         </div>
     </div>
 </template>

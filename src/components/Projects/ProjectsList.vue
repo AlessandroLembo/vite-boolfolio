@@ -9,8 +9,8 @@ export default {
 
 <template>
     <section id="projects-list">
-        <div v-if="projects.length" class="">
-            <project-card v-for="project in projects" :key="project.id" :project="project" class=""></project-card>
+        <div v-if="projects.length">
+            <project-card v-for="project in projects" :key="project.id" :project="project" class="mt-4"></project-card>
 
         </div>
         <h2 v-else class="my-4">Non ci sono progetti</h2>
