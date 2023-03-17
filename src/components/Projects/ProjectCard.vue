@@ -38,9 +38,10 @@ export default {
                 <h5><i>Progetto per: </i>{{ project.project_for }}</h5>
                 <p v-if="project.description">{{ abstract }}</p>
                 <p v-if="project.web_platform"><i>Piattaforme: </i>{{ project.web_platform }}</p>
+                <p><i>Ultima modifica: </i>{{ projectDate }}</p>
             </div>
 
-            <p><i>Ultima modifica: </i>{{ projectDate }}</p>
+
 
             <!-- bindo il to, metto il nome della rotta e passo il paramentro che mi serve, l'id -->
             <router-link v-if="!isDetail" :to="{ name: 'project-detail', params: { id: project.id } }"
