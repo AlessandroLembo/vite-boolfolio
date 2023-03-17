@@ -7,8 +7,8 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <app-header></app-header>
-    <router-view></router-view>
-  </div>
+  <app-header></app-header>
+  <!-- <div class="container"> -->
+  <router-view></router-view>
+  <!-- </div> -->
 </template>
