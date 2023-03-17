@@ -18,6 +18,11 @@ export default {
 
             return `${day}/${month}/${year} - ${hours}:${minutes}`;
 
+        },
+
+        abstract() {
+            const abstract = this.project.description.slice(0, 50)
+            return abstract + '...';
         }
     }
 };
@@ -31,7 +36,7 @@ export default {
         <div class="card-body d-flex justify-content-between align-items-center">
             <div>
                 <h5><i>Progetto per: </i>{{ project.project_for }}</h5>
-                <p v-if="project.description">{{ project.description }}</p>
+                <p v-if="project.description">{{ abstract }}</p>
                 <p v-if="project.web_platform"><i>Piattaforme: </i>{{ project.web_platform }}</p>
                 <p><i>Ultima modifica: </i>{{ projectDate }}</p>
             </div>
