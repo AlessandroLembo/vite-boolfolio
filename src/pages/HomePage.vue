@@ -8,12 +8,18 @@ export default {
     name: 'Home page',
     components: { ProjectsList },
     data: () => ({
+        isLoading: false,
         projects: []
     }),
     methods: {
         fetchProjects() {
+            this.isLoading = true
             axios.get(apiBaseUrl + 'projects').then(res => {
                 this.projects = res.data;
+            }).catch((err) => {
+                console.error(err);
+            }).then(() => {
+                this.isLoading = false;
             });
         },
     },
@@ -26,7 +32,8 @@ export default {
 
 <template>
     <div class="container">
-        <projects-list :projects="projects"></projects-list>
+        <app-loader v-if="isLoading"></app-loader>
+        <projects-list v-else :projects="projects"></projects-list>
 
 
     </div>

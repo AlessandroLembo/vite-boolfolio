@@ -33,13 +33,14 @@ export default {
         <div class="card-header">
             <h3>{{ project.name }}</h3>
         </div>
-        <div class="card-body d-flex justify-content-between align-items-center">
+        <div class="card-body d-flex justify-content-between align-items-start ps-card">
             <div>
                 <h5><i>Progetto per: </i>{{ project.project_for }}</h5>
                 <p v-if="project.description">{{ abstract }}</p>
                 <p v-if="project.web_platform"><i>Piattaforme: </i>{{ project.web_platform }}</p>
-                <p><i>Ultima modifica: </i>{{ projectDate }}</p>
             </div>
+
+            <p><i>Ultima modifica: </i>{{ projectDate }}</p>
 
             <!-- bindo il to, metto il nome della rotta e passo il paramentro che mi serve, l'id -->
             <router-link v-if="!isDetail" :to="{ name: 'project-detail', params: { id: project.id } }"
@@ -48,5 +49,9 @@ export default {
     </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.ps-card {
+    min-height: 200px;
+}
+</style>
 
