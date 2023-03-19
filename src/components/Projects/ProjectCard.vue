@@ -5,11 +5,11 @@ export default {
     computed: {
         projectDate() {
             const date = new Date(this.project.updated_at);
-            let day = date.getDay();
-            let month = date.getMonth();
-            const year = date.getFullYear();
-            const hours = date.getHours();
-            const minutes = date.getMinutes();
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            let year = date.getFullYear();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
 
             if (day < 10) day = "0" + day;
             if (month < 10) month = "0" + month;
@@ -41,6 +41,10 @@ export default {
                 <h5><i>Progetto per: </i>{{ project.project_for }}</h5>
                 <p v-if="project.description">{{ abstract }}</p>
                 <p v-if="project.web_platform"><i>Piattaforme: </i>{{ project.web_platform }}</p>
+                <div v-if="project.technologies?.length">
+                    <span v-for="technology in project.technologies" :key="technology.id"
+                        :class="`text-bg-${technology.color}`" class="badge me-2">{{ technology.label }}</span>
+                </div>
                 <p><i>Ultima modifica: </i>{{ projectDate }}</p>
             </div>
 
