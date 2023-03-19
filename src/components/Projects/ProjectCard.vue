@@ -30,8 +30,11 @@ export default {
 
 <template>
     <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between align-items-center">
             <h3>{{ project.name }}</h3>
+            <!-- Oltre al v-if (più corretto in questo caso) potrei verificare l'esistenza del tipo con il punto interrogativo dopo type -->
+            <div class="badge" v-if="project.type" :style="{ backgroundColor: project.type.color }">{{ project.type.label }}
+            </div>
         </div>
         <div class="card-body d-flex justify-content-between align-items-start ps-card">
             <div>
