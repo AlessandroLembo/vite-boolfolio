@@ -25,7 +25,7 @@ const router = createRouter({
 
 
         // rotta per gestire pagine non esistenti
-        {path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFoundPage}
+        {path: '/:pathMatch(.*)*', name: 'not-found', component: NotFoundPage}
     ]
 });
 
