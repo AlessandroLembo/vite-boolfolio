@@ -31,7 +31,10 @@ export default {
 <template>
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h3>{{ project.name }}</h3>
+            <div class="d-flex align-items-center">
+                <h3 class="me-3">{{ project.name }}</h3>
+                <img v-if="project.image" width="50" :src="project.image" :alt="project.name">
+            </div>
             <router-link v-if="project.type" :to="{ name: 'type-projects', params: { id: project.type.id } }">
                 <!-- Oltre al v-if (più corretto in questo caso) potrei verificare l'esistenza del tipo con il punto interrogativo dopo type -->
                 <div class="badge" :style="{ backgroundColor: project.type.color }">{{
@@ -55,11 +58,10 @@ export default {
                 <p class="pt-3"><i>Ultima modifica: </i>{{ projectDate }}</p>
             </div>
 
-
-
             <!-- bindo il to, metto il nome della rotta e passo il paramentro che mi serve, l'id -->
             <router-link v-if="!isDetail" :to="{ name: 'project-detail', params: { id: project.id } }"
                 class="btn btn-success align-self-end">Vedi</router-link>
+
         </div>
     </div>
 </template>
