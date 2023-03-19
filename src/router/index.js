@@ -6,8 +6,7 @@ import HomePage from '../pages/HomePage.vue';
 import ContactPage from '../pages/ContactPage.vue';
 import NotFoundPage from '../pages/NotFoundPage.vue';
 import ProjectDetailPage from '../pages/Projects/ProjectDetailPage.vue';
-
-
+import TypeProjectsPage from '../pages/Projects/TypeProjectsPage.vue';
 
 // Creiamo il router e definiamo le rotte
 const router = createRouter({
@@ -22,7 +21,9 @@ const router = createRouter({
 
         // rotta per il singolo progetto
         { path: '/projects/:id', name: 'project-detail', component: ProjectDetailPage },
-
+        
+        // rotta per iprogetti ragguppati per type
+        { path: '/types/:id/projects', name: 'type-projects', component: TypeProjectsPage },
 
         // rotta per gestire pagine non esistenti
         {path: '/:pathMatch(.*)*', name: 'not-found', component: NotFoundPage}

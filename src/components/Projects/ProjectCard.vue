@@ -32,20 +32,27 @@ export default {
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h3>{{ project.name }}</h3>
-            <!-- Oltre al v-if (più corretto in questo caso) potrei verificare l'esistenza del tipo con il punto interrogativo dopo type -->
-            <div class="badge" v-if="project.type" :style="{ backgroundColor: project.type.color }">{{ project.type.label }}
-            </div>
+            <router-link v-if="project.type" :to="{ name: 'type-projects', params: { id: project.type.id } }">
+                <!-- Oltre al v-if (più corretto in questo caso) potrei verificare l'esistenza del tipo con il punto interrogativo dopo type -->
+                <div class="badge" :style="{ backgroundColor: project.type.color }">{{
+                    project.type.label }}
+                </div>
+            </router-link>
+
         </div>
         <div class="card-body d-flex justify-content-between align-items-start ps-card">
-            <div>
-                <h5><i>Progetto per: </i>{{ project.project_for }}</h5>
-                <p v-if="project.description">{{ abstract }}</p>
-                <p v-if="project.web_platform"><i>Piattaforme: </i>{{ project.web_platform }}</p>
-                <div v-if="project.technologies?.length">
-                    <span v-for="technology in project.technologies" :key="technology.id"
-                        :class="`text-bg-${technology.color}`" class="badge me-2">{{ technology.label }}</span>
+            <div class="d-flex flex-column justify-content-between">
+                <div>
+                    <h5><i>Progetto per: </i>{{ project.project_for }}</h5>
+                    <p v-if="project.description">{{ abstract }}</p>
+                    <p v-if="project.web_platform"><i>Piattaforme: </i>{{ project.web_platform }}</p>
+                    <div v-if="project.technologies?.length">
+                        <span v-for="technology in project.technologies" :key="technology.id"
+                            :class="`text-bg-${technology.color}`" class="badge me-2">{{ technology.label }}</span>
+                    </div>
                 </div>
-                <p><i>Ultima modifica: </i>{{ projectDate }}</p>
+
+                <p class="pt-3"><i>Ultima modifica: </i>{{ projectDate }}</p>
             </div>
 
 
