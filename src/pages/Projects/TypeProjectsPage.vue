@@ -11,7 +11,8 @@ export default {
     data: () => ({
         isLoading: false,
         hasError: false,
-        projects: []
+        projects: [],
+        type: null,
         // links: [],
     }),
     methods: {
@@ -20,7 +21,9 @@ export default {
             if (!endpoint) endpoint = apiBaseUrl + `types/${this.$route.params.id}/projects`; // se non mi arriva un edpoint allora vado alla pagina di default
             axios.get(endpoint).then(res => {
 
-                this.projects = res.data; // riassegno gli array dichiarati vuoti con ciò che mi arriva in data e links
+                this.projects = res.data.projects; // riassegno all'array vuoto con ciò che mi arriva in data
+                this.type = res.data.type;
+
             }).catch(() => {
                 this.hasError = true;
             }).then(() => {
@@ -37,9 +40,14 @@ export default {
 <template>
     <div class="container">
         <app-alert :is-open="hasError" @close="hasError = false" class="my-3"></app-alert>
+        <h2 class="my-3">Progetti appartenenti a linguaggi di tipo {{ type?.label }}</h2>
         <app-loader v-if="isLoading"></app-loader>
         <projects-list v-else :projects="projects"></projects-list>
         <!-- <app-pagination :links="projects.links" @change-page="fetchProjects"></app-pagination> -->
+        <div class="d-flex justify-content-end my-3">
+            <router-link :to="{ name: 'home' }" class="btn btn-secondary">Torna alla Home</router-link>
+
+        </div>
     </div>
 </template>
 
